@@ -15,12 +15,31 @@
                     <div class="col-span-full">
                         <label for="body" class="block text-sm font-medium leading-6 text-gray-900">Details</label>
                         <div class="mt-2">
-                            <textarea id="body" name="body" rows="3" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder='Some idea for a note...'></textarea>
+                            <textarea 
+                                id="body" 
+                                name="body" 
+                                rows="3" 
+                                class="
+                                block w-full rounded-md 
+                                border-0 py-1.5 text-gray-900 
+                                shadow-sm ring-1 ring-inset ring-gray-300 
+                                placeholder:text-gray-400 focus:ring-2 
+                                focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" 
+                                placeholder='Some idea for a note...'
+                            ><?= $_POST['body'] ?? '' ?></textarea>
                         </div>
                         <p class="mt-3 text-sm leading-6 text-gray-600">Write Details about note.</p>
                     </div>
+                    
+                        <?php if (isset($errors['body'])) : ?>
+                            <p class='text-red-500 text-xs mt-2'><?= $errors['body'] ?></p>
+                        <?php endif; ?>
+                    
+
+
                 </div>
             </div>
+
 
             <div class="mt-2 flex items-center justify-end gap-x-6">
                 <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>

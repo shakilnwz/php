@@ -7,10 +7,23 @@ $config = require "config.php";
 $db = new Database($config['Database'], "root", "AHsy@9186");
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $db->query('INSERT INTO notes (body, user_id) VALUES ( :body , :user_id)', [
-        'body' => $_POST["body"],
-        'user_id' => 2
-    ]);
+    
+    $errors = [];
+
+    if(strlen($_POST['body']) === 0){
+        $errors['body'] = "Note cant be empty";
+    }
+   
+    if(strlen($_POST['body']) > 1000 ){
+        $errors['body'] = 'Note must be less than 1000 chars';
+    }
+   
+    if(empty($errors)){
+        $db->query('INSERT INTO notes (body, user_id) VALUES ( :body , :user_id)', [
+            'body' => $_POST["body"],
+            'user_id' => 2
+        ]);
+    }
 }
 
 
