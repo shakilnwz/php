@@ -1,16 +1,6 @@
 <?php
 
-
-$uri = parse_url($_SERVER["REQUEST_URI"])['path'];
-
-
-$routes = [
-  '/' => 'controllers/index.php',
-  '/about' => 'controllers/about.php',
-  '/notes' => 'controllers/notes.php',
-  '/note' => 'controllers/note.php',
-  '/contact' => 'controllers/contact.php'
-];
+$routes = require "routes.php";
 
 function routeToPath($uri, $routes)
 {
@@ -29,5 +19,8 @@ function abort($responsCode = 404)
   require "views/{$responsCode}.php";
   die();
 }
+
+$uri = parse_url($_SERVER["REQUEST_URI"])['path'];
+
 routeToPath($uri, $routes);
  
