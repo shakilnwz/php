@@ -23,4 +23,4 @@ function abort($responsCode = 404)
 $uri = parse_url($_SERVER["REQUEST_URI"])['path'];
 
 routeToPath($uri, $routes);
- 
+  
