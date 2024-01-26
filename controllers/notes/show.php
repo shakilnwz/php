@@ -1,9 +1,8 @@
 <?php
 //requiring the functions at the top of the page
 
-$header = "Note";
 
-$config = require "config.php";
+$config = require base_path("config.php");
 $db = new Database($config['Database'], "root", "AHsy@9186");
 
 
@@ -13,4 +12,9 @@ $currentUser = 2;
 
 authorize($note['user_id'] === $currentUser);
 
-require "views/notes/show.view.php";
+
+view('notes/show.view.php', [
+    'header' => 'Note',
+    'note' => $note
+
+]);
