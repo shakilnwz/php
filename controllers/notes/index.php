@@ -1,5 +1,6 @@
 <?php
 
+use Core\Database;
 // requiring the functions at the top of the page
 
 $config = require base_path("config.php");

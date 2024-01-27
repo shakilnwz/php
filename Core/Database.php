@@ -1,4 +1,11 @@
 <?php
+
+//declare namespace
+namespace Core;
+
+//import root class 
+use PDO;
+
 class Database
 {
     //declare variable for connection
