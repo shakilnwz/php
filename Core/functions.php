@@ -1,5 +1,7 @@
 <?php
 
+use Core\Response;
+
 function ddie($var)
 {
     echo "<pre>";
@@ -19,6 +21,17 @@ function authorize($condition, $status = Response::FORBIDDEN)
         abort($status);
     }
 }
+
+function abort($responseCode = 404)
+{
+    http_response_code($responseCode);
+
+    require base_path("views/{$responseCode}.php");
+
+    die();
+}
+
+
 
 function base_path($path)
 {
