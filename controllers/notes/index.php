@@ -1,10 +1,10 @@
 <?php
 
 use Core\Database;
-// requiring the functions at the top of the page
+use Core\App;
 
-$config = require base_path("config.php");
-$db = new Database($config['Database'], "root", "AHsy@9186");
+$db = App::resolve(Database::class);
+
 
 
 $notes = $db->query("select * from notes where user_id = 2 ;")->get();

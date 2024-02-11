@@ -1,5 +1,8 @@
 <?php
 
+//start a session to use name
+session_start();
+
 // set location for namespaced Router
 use Core\Router;
 
@@ -15,8 +18,9 @@ spl_autoload_register(function ($class) {
 });
 
 
+require base_path('bootstrap.php');
 
-//require base_path("Core/router.php");
+// require base_path("Core/router.php");
 
 // create an instance of the router
 $router = new Router();
